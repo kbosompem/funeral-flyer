@@ -14,7 +14,7 @@
     --gold-dark: #8B6914;
     --cream: #FDF8F0;
     --page-w: 650px;
-    --page-h: 1000px;
+    --page-h: 836px;
   }
 
   html, body {
@@ -116,9 +116,9 @@
      ============================================ */
   .invited-overlay {
     position: absolute;
-    top: 45%;
-    right: 16px;
-    padding: 4px 16px 8px;
+    top: 48%;
+    right: 10px;
+    padding: 3px 10px 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,9 +128,9 @@
   .invited-divider {
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 140px;
-    margin-bottom: 6px;
+    gap: 8px;
+    width: 110px;
+    margin-bottom: 4px;
   }
 
   .invited-divider .line {
@@ -138,14 +138,14 @@
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 
-  .invited-divider .dot { color: var(--gold); font-size: 7px; opacity: 0.7; }
+  .invited-divider .dot { color: var(--gold); font-size: 6px; opacity: 0.7; }
 
   .invited-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 14px; font-style: italic;
+    font-size: 11px; font-style: italic;
     color: var(--gold-light);
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
 
@@ -153,21 +153,22 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 16px;
+    gap: 10px;
   }
 
   .invited-person {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 2px;
+    max-width: 70px;
   }
 
   .invited-photo {
-    width: 56px; height: 56px;
-    border-radius: 4px;
-    border: 2px solid var(--gold);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    width: 44px; height: 44px;
+    border-radius: 3px;
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     background-color: #2a1520;
     background-size: cover;
     background-position: center 20%;
@@ -176,25 +177,27 @@
 
   .invited-name {
     font-family: 'Cinzel', serif;
-    font-size: 10px; font-weight: 600;
+    font-size: 7px; font-weight: 600;
     color: var(--gold-light);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    text-align: center;
+    line-height: 1.2;
   }
 
   .invited-role {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 10px; font-style: italic;
+    font-size: 8px; font-style: italic;
     color: rgba(232, 212, 139, 0.7);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
   .invited-amp {
     font-family: 'Great Vibes', cursive;
-    font-size: 24px;
+    font-size: 18px;
     color: var(--gold);
-    padding-top: 14px;
+    padding-top: 8px;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
   }
 
@@ -210,82 +213,83 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 4%;
     pointer-events: none;
   }
 
   .front-title {
-    font-family: 'Cinzel', serif;
-    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 39px;
     font-weight: 700;
     color: var(--cream);
     letter-spacing: 5px;
     text-transform: uppercase;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.05;
+    white-space: nowrap;
   }
 
   .front-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
     font-weight: 400;
     font-style: italic;
     color: rgba(253, 248, 240, 0.85);
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 8px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.8);
   }
 
   .front-name {
-    font-family: 'Cinzel', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 48px;
     font-weight: 700;
     color: var(--cream);
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
     text-align: center;
     line-height: 1.15;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .front-flourish {
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 200px;
-    margin-top: 8px;
+    gap: 8px;
+    width: 180px;
+    margin-top: 6px;
   }
   .front-flourish .line {
     flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(253,248,240,0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(253,248,240,0.5), transparent);
   }
   .front-flourish svg {
-    width: 36px; height: 16px;
-    fill: rgba(253,248,240,0.7);
+    width: 32px; height: 14px;
+    fill: rgba(253,248,240,0.6);
   }
 
   .front-years {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
     color: rgba(253, 248, 240, 0.85);
-    letter-spacing: 8px;
-    margin-top: 6px;
+    letter-spacing: 6px;
+    margin-top: 4px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.8);
   }
 
   .front-date {
-    font-family: 'Cinzel', serif;
-    font-size: 30px;
-    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
     color: var(--cream);
     letter-spacing: 4px;
     text-transform: uppercase;
-    margin-top: 24px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5);
+    margin-top: 18px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
   }
 
   /* ============================================
@@ -331,17 +335,17 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 32px 40px 24px;
+    padding: 22px 36px 16px;
     color: var(--cream);
   }
 
   .back-title {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 400;
     font-style: italic;
     letter-spacing: 1px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     text-shadow: 0 2px 6px rgba(0,0,0,0.5);
   }
 
@@ -349,8 +353,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 220px;
-    margin-bottom: 16px;
+    width: 200px;
+    margin-bottom: 10px;
   }
 
   .back-ornament .line {
@@ -367,41 +371,41 @@
   .events-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px 24px;
+    gap: 8px 20px;
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .event-card { text-align: left; }
 
   .event-card .ev-label {
     font-family: 'Cinzel', serif;
-    font-size: 12px; font-weight: 700;
+    font-size: 10px; font-weight: 700;
     color: var(--gold-light);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 
   .event-card .ev-time {
-    font-size: 15px; font-weight: 600;
+    font-size: 13px; font-weight: 600;
     color: var(--cream);
     margin-bottom: 1px;
   }
 
   .event-card .ev-venue {
-    font-size: 14px; font-weight: 600;
+    font-size: 12px; font-weight: 600;
     color: var(--cream);
   }
 
   .event-card .ev-address {
-    font-size: 13px;
+    font-size: 11px;
     color: rgba(253, 248, 240, 0.8);
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   .event-card .ev-note {
-    font-size: 12px; font-style: italic;
+    font-size: 10px; font-style: italic;
     color: var(--gold-light);
     opacity: 0.85;
     margin-top: 1px;
@@ -417,23 +421,23 @@
   /* Family section */
   .family-section {
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     text-align: center;
   }
 
   .family-section .family-heading {
     font-family: 'Cinzel', serif;
-    font-size: 10px; font-weight: 700;
+    font-size: 9px; font-weight: 700;
     color: var(--gold-light);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 
   .family-section .family-names {
-    font-size: 13px;
+    font-size: 11px;
     color: rgba(253, 248, 240, 0.85);
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   /* ============================================
@@ -442,23 +446,23 @@
   .collage-section {
     width: 100%;
     text-align: center;
-    margin: 6px 0 10px;
+    margin: 4px 0 6px;
   }
 
   .collage-heading {
     font-family: 'Cinzel', serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     color: var(--gold-light);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .collage-row {
     display: flex;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
   }
 
@@ -466,13 +470,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
-    width: 52px;
+    gap: 1px;
+    width: 48px;
   }
 
   .collage-photo {
-    width: 40px; height: 40px;
-    border-radius: 4px;
+    width: 36px; height: 36px;
+    border-radius: 3px;
     border: 1.5px solid var(--gold);
     box-shadow: 0 1px 6px rgba(0,0,0,0.4);
     background-color: #2a1520;
@@ -483,20 +487,20 @@
 
   .collage-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 7.5px;
+    font-size: 7px;
     color: rgba(253, 248, 240, 0.75);
     text-align: center;
-    line-height: 1.2;
-    letter-spacing: 0.3px;
+    line-height: 1.15;
+    letter-spacing: 0.2px;
   }
 
   .collage-divider-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 8px;
+    font-size: 7px;
     font-style: italic;
     color: rgba(201, 168, 76, 0.5);
     letter-spacing: 2px;
-    margin: 5px 0 3px;
+    margin: 3px 0 2px;
     text-transform: uppercase;
   }
 
@@ -506,24 +510,24 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 8px;
   }
 
   .info-block { text-align: center; }
 
   .info-block .info-heading {
     font-family: 'Cinzel', serif;
-    font-size: 10px; font-weight: 700;
+    font-size: 9px; font-weight: 700;
     color: var(--gold-light);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
 
   .info-block .info-text {
-    font-size: 12px;
+    font-size: 10px;
     color: rgba(253, 248, 240, 0.85);
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .info-block .info-text strong {
@@ -533,13 +537,13 @@
   .attire-badge {
     display: inline-block;
     font-family: 'Cinzel', serif;
-    font-size: 11px; font-weight: 700;
+    font-size: 10px; font-weight: 700;
     color: var(--cream);
     letter-spacing: 2px;
     text-transform: uppercase;
     border: 1.5px solid var(--gold);
-    padding: 4px 16px;
-    margin-top: 6px;
+    padding: 3px 14px;
+    margin-top: 4px;
   }
 
   /* ============================================
@@ -560,7 +564,7 @@
   @media screen and (max-width: 700px) {
     :root {
       --page-w: 94vw;
-      --page-h: calc(94vw * 1600 / 1050);
+      --page-h: calc(94vw * 1024 / 796);
     }
     .controls { margin: 10px 3%; }
     .events-grid { gap: 8px 14px; }
@@ -593,7 +597,7 @@
 
     <!-- Styled text overlay matching original design -->
     <div class="front-text-overlay">
-      <div class="front-title">Celebration<br>of Life</div>
+      <div class="front-title">Celebration of Life</div>
       <div class="front-subtitle">In Loving Memory of</div>
       <div class="front-name">Obaapanyin<br>Cecilia Gyan</div>
       <div class="front-flourish">
