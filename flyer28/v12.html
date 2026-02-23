@@ -926,6 +926,11 @@
     });
   }
 
+  function getChildSlug() {
+    const child = FAMILY.find(c => c.id === select.value);
+    return child ? child.id : 'flyer';
+  }
+
   function downloadCanvas(canvas, filename) {
     try {
       const a = document.createElement('a');
@@ -951,11 +956,12 @@
       await prepareForExport();
       showStatus('Capturing front page...');
       const frontCanvas = await capturePage(document.getElementById('front-page'));
-      downloadCanvas(frontCanvas, 'flyer-front.png');
+      const slug = getChildSlug();
+      downloadCanvas(frontCanvas, slug + '-front.png');
 
       showStatus('Capturing back page...');
       const backCanvas = await capturePage(document.getElementById('back-page'));
-      downloadCanvas(backCanvas, 'flyer-back.png');
+      downloadCanvas(backCanvas, slug + '-back.png');
 
       showStatus('Done! 2 images saved.');
       setTimeout(hideStatus, 2000);
@@ -983,7 +989,7 @@
       ctx.drawImage(frontCanvas, 0, 0);
       ctx.drawImage(backCanvas, frontCanvas.width + gap, 0);
 
-      downloadCanvas(combined, 'flyer-side-by-side.png');
+      downloadCanvas(combined, getChildSlug() + '-side-by-side.png');
       showStatus('Done! Side-by-side image saved.');
       setTimeout(hideStatus, 2000);
     } catch(e) {
@@ -1193,7 +1199,7 @@
 
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = 'flyer-animated.gif';
+      a.download = getChildSlug() + '-animated.gif';
       a.click();
       URL.revokeObjectURL(a.href);
       showStatus('Done! GIF saved.');
