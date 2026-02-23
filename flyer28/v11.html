@@ -203,13 +203,23 @@
      BACK PAGE — Custom CSS Background
      ============================================ */
   .back {
-    background:
-      /* Subtle lighter center — mimics front-cover's soft warmth */
-      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(62, 42, 35, 0.4) 0%, transparent 100%),
-      /* Dark vignette edges */
-      radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, rgba(12, 8, 6, 0.5) 100%),
-      /* Base dark chocolate-brown matching front-cover.jpeg */
-      linear-gradient(to bottom, #2d2018 0%, #261c14 30%, #1f1610 60%, #181210 100%);
+    background: linear-gradient(to bottom, #2d2018 0%, #261c14 30%, #1f1610 60%, #181210 100%);
+  }
+
+  /* Vignette + warm center as overlays (avoids html2canvas radial-gradient bug) */
+  .back-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(12, 8, 6, 0.5) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .back-warmth {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(62, 42, 35, 0.4) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   /* Gold border */
@@ -489,6 +499,7 @@
   <button onclick="exportSeparate()">Export 2 Images</button>
   <button onclick="exportSideBySide()">Export Side-by-Side</button>
   <button onclick="exportGif()">Export GIF</button>
+  <button onclick="startServer()" id="serve-btn" style="display:none;">Start Local Server</button>
 </div>
 <div class="controls" id="export-status" style="display:none; justify-content:center;">
   <span id="status-text" style="color:var(--gold-light);">Exporting...</span>
@@ -529,6 +540,9 @@
 
   <!-- ==================== BACK PAGE ==================== -->
   <div class="page back" id="back-page">
+    <!-- Vignette + warmth overlays -->
+    <div class="back-vignette"></div>
+    <div class="back-warmth"></div>
     <!-- Gold border -->
     <div class="back-border"></div>
 
@@ -829,26 +843,67 @@
   renderFlyer(FAMILY[0].id);
 </script>
 
-<!-- html2canvas for rasterizing pages -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- html2canvas for rasterizing pages (local copy for file:// support) -->
+<script src="html2canvas.min.js"></script>
 
 <script>
   const statusBar = document.getElementById('export-status');
   const statusText = document.getElementById('status-text');
+  const isFileProtocol = location.protocol === 'file:';
 
-  function showStatus(msg) {
+  // Show "Start Local Server" button if opened via file://
+  if (isFileProtocol) document.getElementById('serve-btn').style.display = '';
+
+  function showStatus(msg, isError) {
     statusBar.style.display = 'flex';
     statusText.textContent = msg;
+    statusText.style.color = isError ? '#ff6b6b' : 'var(--gold-light)';
   }
   function hideStatus() {
     statusBar.style.display = 'none';
+  }
+
+  function startServer() {
+    const cmd = 'python3 -m http.server 8000 -d "' + (location.pathname.replace(/\/[^/]*$/, '').replace(/^\//, '')) + '"';
+    navigator.clipboard.writeText(cmd).then(() => {
+      showStatus('Command copied! Paste in Terminal, then open http://localhost:8000/v11.html');
+      setTimeout(hideStatus, 6000);
+    }).catch(() => {
+      prompt('Run this in Terminal:', cmd);
+    });
+  }
+
+  // Convert all images to data URIs to avoid canvas taint
+  async function convertImagesToDataURIs(container) {
+    const imgs = container.querySelectorAll('img');
+    const promises = Array.from(imgs).map(img => {
+      if (!img.src || img.src.startsWith('data:')) return Promise.resolve();
+      return new Promise(resolve => {
+        const c = document.createElement('canvas');
+        const tmpImg = new Image();
+        tmpImg.crossOrigin = 'anonymous';
+        tmpImg.onload = () => {
+          c.width = tmpImg.naturalWidth || tmpImg.width;
+          c.height = tmpImg.naturalHeight || tmpImg.height;
+          if (c.width === 0 || c.height === 0) { resolve(); return; }
+          c.getContext('2d').drawImage(tmpImg, 0, 0);
+          try {
+            img.src = c.toDataURL('image/jpeg', 0.92);
+          } catch(e) { /* tainted, leave as-is */ }
+          resolve();
+        };
+        tmpImg.onerror = () => resolve();
+        tmpImg.src = img.src;
+      });
+    });
+    await Promise.all(promises);
   }
 
   async function capturePage(el) {
     return html2canvas(el, {
       scale: 2,
       useCORS: true,
-      allowTaint: true,
+      allowTaint: false,
       backgroundColor: null,
       width: el.offsetWidth,
       height: el.offsetHeight
@@ -856,44 +911,69 @@
   }
 
   function downloadCanvas(canvas, filename) {
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png');
-    a.download = filename;
-    a.click();
+    try {
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = filename;
+      a.click();
+    } catch(e) {
+      if (e.message.includes('Tainted')) {
+        showStatus('Export blocked by browser security. Use "Start Local Server" button or try Safari.', true);
+        setTimeout(hideStatus, 5000);
+      } else throw e;
+    }
+  }
+
+  async function prepareForExport() {
+    showStatus('Preparing images...');
+    await convertImagesToDataURIs(document.getElementById('front-page'));
+    await convertImagesToDataURIs(document.getElementById('back-page'));
   }
 
   async function exportSeparate() {
-    showStatus('Capturing front page...');
-    const frontCanvas = await capturePage(document.getElementById('front-page'));
-    downloadCanvas(frontCanvas, 'flyer-front.png');
+    try {
+      await prepareForExport();
+      showStatus('Capturing front page...');
+      const frontCanvas = await capturePage(document.getElementById('front-page'));
+      downloadCanvas(frontCanvas, 'flyer-front.png');
 
-    showStatus('Capturing back page...');
-    const backCanvas = await capturePage(document.getElementById('back-page'));
-    downloadCanvas(backCanvas, 'flyer-back.png');
+      showStatus('Capturing back page...');
+      const backCanvas = await capturePage(document.getElementById('back-page'));
+      downloadCanvas(backCanvas, 'flyer-back.png');
 
-    showStatus('Done! 2 images saved.');
-    setTimeout(hideStatus, 2000);
+      showStatus('Done! 2 images saved.');
+      setTimeout(hideStatus, 2000);
+    } catch(e) {
+      showStatus('Export error: ' + e.message, true);
+      setTimeout(hideStatus, 5000);
+    }
   }
 
   async function exportSideBySide() {
-    showStatus('Capturing pages...');
-    const frontCanvas = await capturePage(document.getElementById('front-page'));
-    const backCanvas = await capturePage(document.getElementById('back-page'));
+    try {
+      await prepareForExport();
+      showStatus('Capturing pages...');
+      const frontCanvas = await capturePage(document.getElementById('front-page'));
+      const backCanvas = await capturePage(document.getElementById('back-page'));
 
-    showStatus('Composing side-by-side...');
-    const gap = 40;
-    const combined = document.createElement('canvas');
-    combined.width = frontCanvas.width + backCanvas.width + gap;
-    combined.height = Math.max(frontCanvas.height, backCanvas.height);
-    const ctx = combined.getContext('2d');
-    ctx.fillStyle = '#111';
-    ctx.fillRect(0, 0, combined.width, combined.height);
-    ctx.drawImage(frontCanvas, 0, 0);
-    ctx.drawImage(backCanvas, frontCanvas.width + gap, 0);
+      showStatus('Composing side-by-side...');
+      const gap = 40;
+      const combined = document.createElement('canvas');
+      combined.width = frontCanvas.width + backCanvas.width + gap;
+      combined.height = Math.max(frontCanvas.height, backCanvas.height);
+      const ctx = combined.getContext('2d');
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, combined.width, combined.height);
+      ctx.drawImage(frontCanvas, 0, 0);
+      ctx.drawImage(backCanvas, frontCanvas.width + gap, 0);
 
-    downloadCanvas(combined, 'flyer-side-by-side.png');
-    showStatus('Done! Side-by-side image saved.');
-    setTimeout(hideStatus, 2000);
+      downloadCanvas(combined, 'flyer-side-by-side.png');
+      showStatus('Done! Side-by-side image saved.');
+      setTimeout(hideStatus, 2000);
+    } catch(e) {
+      showStatus('Export error: ' + e.message, true);
+      setTimeout(hideStatus, 5000);
+    }
   }
 
   /* ====== Minimal GIF encoder (no external deps) ====== */
@@ -1061,45 +1141,55 @@
   }
 
   async function exportGif() {
-    showStatus('Capturing pages for GIF...');
-    const frontCanvas = await capturePage(document.getElementById('front-page'));
-    const backCanvas = await capturePage(document.getElementById('back-page'));
+    try {
+      await prepareForExport();
+      showStatus('Capturing pages for GIF...');
+      const frontCanvas = await capturePage(document.getElementById('front-page'));
+      const backCanvas = await capturePage(document.getElementById('back-page'));
 
-    // Scale down for GIF (full 2x is too large)
-    const scale = 0.5; // back to 1x
-    const w = Math.round(frontCanvas.width * scale);
-    const h = Math.round(frontCanvas.height * scale);
+      // Scale down for GIF (full 2x is too large)
+      const scale = 0.5; // back to 1x
+      const w = Math.round(frontCanvas.width * scale);
+      const h = Math.round(frontCanvas.height * scale);
 
-    function scaleCanvas(src) {
-      const c = document.createElement('canvas');
-      c.width = w; c.height = h;
-      const ctx = c.getContext('2d');
-      ctx.drawImage(src, 0, 0, w, h);
-      return ctx.getImageData(0, 0, w, h);
+      function scaleCanvas(src) {
+        const c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(src, 0, 0, w, h);
+        return ctx.getImageData(0, 0, w, h);
+      }
+
+      showStatus('Processing frames...');
+      const frontFrame = scaleCanvas(frontCanvas);
+      const backFrame = scaleCanvas(backCanvas);
+
+      showStatus('Encoding GIF (10 cycles, 30s per frame)...');
+      const frames = [];
+      const delays = [];
+      for (let i = 0; i < 10; i++) {
+        frames.push(frontFrame, backFrame);
+        delays.push(30000, 30000);
+      }
+
+      const encoder = gifEncoder(w, h);
+      const blob = encoder.encode(frames, delays, 0);
+
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'flyer-animated.gif';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showStatus('Done! GIF saved.');
+      setTimeout(hideStatus, 2000);
+    } catch(e) {
+      if (e.message.includes('Tainted') || e.message.includes('security')) {
+        showStatus('Export blocked by browser security. Use "Start Local Server" button or try Safari.', true);
+      } else {
+        showStatus('GIF error: ' + e.message, true);
+      }
+      setTimeout(hideStatus, 5000);
     }
-
-    showStatus('Processing frames...');
-    const frontFrame = scaleCanvas(frontCanvas);
-    const backFrame = scaleCanvas(backCanvas);
-
-    showStatus('Encoding GIF (10 cycles, 30s per frame)...');
-    const frames = [];
-    const delays = [];
-    for (let i = 0; i < 10; i++) {
-      frames.push(frontFrame, backFrame);
-      delays.push(30000, 30000);
-    }
-
-    const encoder = gifEncoder(w, h);
-    const blob = encoder.encode(frames, delays, 0);
-
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'flyer-animated.gif';
-    a.click();
-    URL.revokeObjectURL(a.href);
-    showStatus('Done! GIF saved.');
-    setTimeout(hideStatus, 2000);
   }
 </script>
 
