@@ -1,0 +1,113 @@
+{
+  "deceased": {
+    "title": "Obaapanyin",
+    "firstName": "Cecilia",
+    "lastName": "Gyan",
+    "fullName": "Obaapanyin Cecilia Gyan",
+    "motherTitle": "Mama",
+    "alias": "Sweet Sixteen (16)",
+    "aliasDisplay": "Sweet 16",
+    "birthYear": 1944,
+    "deathYear": 2026,
+    "mainPhoto": "../main.JPG",
+    "vintagePhoto": "../IMG_0369.JPG",
+    "vintageCaption": "AKA ~ Sweet Sixteen (16)"
+  },
+  "parents": {
+    "father": { "name": "Mr. Samuel Gyan", "deceased": true },
+    "mother": { "name": "Mrs. Agatha Gyan", "deceased": true }
+  },
+  "siblings": [
+    "Mr. Appiah-Agyei",
+    "Mr. Akwasi Mensah",
+    "Mrs. Cecilia Asamoah-Gyan",
+    "Mrs. Vivian Gyan"
+  ],
+  "funeralDate": "March 28, 2026",
+  "funeralDateFull": "Saturday, March 28, 2026",
+  "events": {
+    "callingHours": {
+      "label": "Calling Hours",
+      "date": "Saturday, March 28, 2026",
+      "startTime": "9:00 a.m.",
+      "endTime": "11:00 a.m.",
+      "venue": "Mercadante Funeral Home & Chapel",
+      "address": "370 Plantation Street",
+      "city": "Worcester",
+      "state": "MA",
+      "zip": "01605"
+    },
+    "funeralService": {
+      "label": "Funeral Service",
+      "time": "11:00 a.m.",
+      "note": "at the funeral home"
+    },
+    "interment": {
+      "label": "Interment",
+      "venue": "Mountain View Cemetery",
+      "city": "Shrewsbury",
+      "state": "Massachusetts",
+      "exitTime": "2:00 p.m.",
+      "exitNote": "Please note: We must exit the cemetery no later than"
+    },
+    "funeralRites": {
+      "label": "Funeral Rites",
+      "startTime": "10:00 p.m.",
+      "endTime": "4:00 a.m.",
+      "venue": "20 Uncatena Ave",
+      "city": "Worcester",
+      "state": "MA",
+      "zip": "01606"
+    },
+    "repass": {
+      "label": "Repass",
+      "note": "Follows after interment",
+      "venue": "105 Spring St",
+      "city": "Shrewsbury",
+      "state": "MA",
+      "zip": ""
+    },
+    "thanksgivingService": {
+      "label": "Thanksgiving Service",
+      "date": "Sunday, March 29, 2026",
+      "time": "TBD",
+      "venue": "TBD",
+      "address": "TBD",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  },
+  "rsvp": [
+    { "name": "Josephine", "phone": "+1 (646) 379-2482" },
+    { "name": "Dubois", "phone": "+1 (774) 253-5971" },
+    { "name": "Nimo", "phone": "+1 (978) 996-9946" }
+  ],
+  "donations": {
+    "methods": ["CashApp", "Zelle"],
+    "recipient": "Josephine",
+    "phone": "+1 (646) 379-2482"
+  },
+  "attire": "Black & White",
+  "chiefMourners": [
+    "The Gyan Family",
+    "The Putu Family",
+    "The Nyamikeh Family",
+    "The Antwi Family",
+    "The Quainoo Family",
+    "The Amoako Family",
+    "The Bosompem Family",
+    "The Nimo Family",
+    "The Boateng Family"
+  ],
+  "grandchildren": [
+    "Grandchild Name 1",
+    "Grandchild Name 2",
+    "Grandchild Name 3",
+    "Grandchild Name 4",
+    "Grandchild Name 5",
+    "Grandchild Name 6",
+    "Grandchild Name 7",
+    "Grandchild Name 8"
+  ]
+}

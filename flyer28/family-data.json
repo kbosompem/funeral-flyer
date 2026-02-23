@@ -1,0 +1,121 @@
+{
+  "children": [
+    {
+      "id": "hannah",
+      "title": "Mrs.",
+      "firstName": "Hannah",
+      "lastName": "Bosompem",
+      "displayName": "Hannah Putu",
+      "relationship": "Daughter",
+      "birthOrder": 1,
+      "photo": "hannah2.jpeg",
+      "spouse": {
+        "title": "Mr.",
+        "firstName": "Kwabena",
+        "lastName": "Bosompem",
+        "displayName": "Kwabena Bosompem",
+        "relationship": "Son-in-law",
+        "photo": "../headshots/5.jpg"
+      }
+    },
+    {
+      "id": "nana-yaa",
+      "title": "Mrs.",
+      "firstName": "Nana Yaa",
+      "lastName": "Nimo",
+      "displayName": "Nana Yaa Putu",
+      "relationship": "Daughter",
+      "birthOrder": 2,
+      "photo": "../headshots/1.JPG",
+      "spouse": {
+        "title": "Mr.",
+        "firstName": "Kwabena",
+        "lastName": "Nimo",
+        "displayName": "Kwabena Nimo",
+        "relationship": "Son-in-law",
+        "photo": "../headshots/4.JPG"
+      }
+    },
+    {
+      "id": "vivian",
+      "title": "Mrs.",
+      "firstName": "Vivian",
+      "lastName": "Boateng",
+      "displayName": "Vivian Antwi",
+      "relationship": "Niece",
+      "birthOrder": 3,
+      "photo": "../headshots/7.jpg",
+      "spouse": {
+        "title": "Mr.",
+        "firstName": "Kennedy",
+        "lastName": "Boateng",
+        "displayName": "Kennedy Boateng",
+        "relationship": "Nephew-in-law",
+        "photo": "../headshots/9.jpg"
+      }
+    },
+    {
+      "id": "josephine",
+      "title": "Mrs.",
+      "firstName": "Josephine",
+      "lastName": "Nyamikeh",
+      "displayName": "Josephine Putu",
+      "relationship": "Daughter",
+      "birthOrder": 4,
+      "photo": "../headshots/3.jpg",
+      "spouse": {
+        "title": "Rev.",
+        "firstName": "Dubois",
+        "lastName": "Nyamikeh",
+        "displayName": "Rev. Dubois Nyamikeh",
+        "relationship": "Son-in-law",
+        "photo": "../headshots/6.JPG"
+      }
+    },
+    {
+      "id": "frank",
+      "title": "Mr.",
+      "firstName": "Frank",
+      "lastName": "Ofori Gyan",
+      "displayName": "Frank Ofori Gyan",
+      "aka": "Bruno",
+      "relationship": "Son",
+      "birthOrder": 5,
+      "photo": "photos/frank.jpg",
+      "spouse": {
+        "title": "Mrs.",
+        "firstName": "Linda",
+        "lastName": "Ofori Gyan",
+        "displayName": "Linda Ofori Gyan",
+        "relationship": "Daughter-in-law",
+        "photo": "photos/linda.jpg"
+      }
+    },
+    {
+      "id": "evelyn",
+      "title": "Mrs.",
+      "firstName": "Evelyn",
+      "lastName": "Ofori",
+      "displayName": "Evelyn Ofori",
+      "aka": "Mama",
+      "relationship": "Daughter",
+      "birthOrder": 6,
+      "photo": "photos/evelyn.jpg",
+      "spouse": null,
+      "maritalNote": "Widowed"
+    },
+    {
+      "id": "dorothy",
+      "title": "Ms.",
+      "firstName": "Dorothy",
+      "lastName": "Quainoo Putu",
+      "displayName": "Dorothy Quainoo Putu",
+      "aka": "Maame Esi",
+      "relationship": "Daughter",
+      "birthOrder": 7,
+      "photo": "photos/dorothy.jpg",
+      "spouse": null,
+      "maritalNote": "Divorced"
+    }
+  ]
+}

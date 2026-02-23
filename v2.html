@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celebration of Life — Mama Cecilia Gyan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garabaldi:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --gold: #9E7A2E;
+    --gold-light: #C9A84C;
+    --gold-pale: #E8D48B;
+    --gold-dark: #6B5220;
+    --burgundy: #5C1A2A;
+    --burgundy-light: #7A2840;
+    --cream: #FDF8F0;
+    --cream-dark: #F0E6D3;
+    --warm-gray: #B8A98E;
+    --text-dark: #2C1810;
+    --text-medium: #5A3D2E;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: #E8DFD0;
+    font-family: 'Cormorant Garabaldi', 'Georgia', serif;
+    color: var(--text-dark);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .flyer {
+    width: 210mm;
+    min-height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Subtle warm texture */
+  .flyer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(92, 26, 42, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(92, 26, 42, 0.04) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Outer gold border */
+  .flyer::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 2px solid var(--gold-light);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .inner-frame {
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(158, 122, 46, 0.25);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    color: var(--gold);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+  }
+  .corner--tl { top: 18px; left: 18px; }
+  .corner--tr { top: 18px; right: 18px; }
+  .corner--bl { bottom: 18px; left: 18px; }
+  .corner--br { bottom: 18px; right: 18px; }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 36px 40px 32px;
+    min-height: 297mm;
+  }
+
+  /* Top ornamental line */
+  .top-ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 4px;
+    opacity: 0.6;
+  }
+
+  .top-ornament .line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  /* Title */
+  .title {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .title-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0;
+    width: 75%;
+    max-width: 360px;
+  }
+
+  .divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .divider .diamond {
+    color: var(--gold);
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  /* Photo section */
+  .photo-wrapper {
+    position: relative;
+    margin: 14px 0 12px;
+  }
+
+  .photo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    background: radial-gradient(ellipse, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .photo-frame {
+    position: relative;
+    z-index: 1;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark), var(--gold-light), var(--gold-dark), var(--gold-light));
+    background-size: 300% 300%;
+    box-shadow: 0 4px 20px rgba(92, 26, 42, 0.15);
+  }
+
+  .photo-frame-inner {
+    padding: 3px;
+    background: var(--cream);
+  }
+
+  .photo {
+    display: block;
+    width: 300px;
+    height: 310px;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  /* Ornament below photo */
+  .photo-ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 20px;
+    margin-top: 10px;
+    letter-spacing: 8px;
+    opacity: 0.45;
+  }
+
+  /* Announcement text */
+  .announcement {
+    font-family: 'Cormorant Garabaldi', serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.7;
+    color: var(--text-medium);
+    margin: 10px 0 4px;
+    letter-spacing: 0.5px;
+    max-width: 400px;
+  }
+
+  /* Name */
+  .name-section {
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .name {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    line-height: 1.2;
+  }
+
+  .name-last {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-top: 2px;
+    text-shadow: 1px 1px 0 rgba(107, 82, 32, 0.3);
+  }
+
+  /* Cross */
+  .cross {
+    font-size: 24px;
+    color: var(--gold);
+    opacity: 0.45;
+    margin: 10px 0;
+  }
+
+  /* Save the date section */
+  .save-date-section {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .save-label {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .date-box {
+    position: relative;
+    display: inline-block;
+    padding: 12px 40px;
+    border: 1.5px solid var(--burgundy);
+    background: linear-gradient(135deg, rgba(92, 26, 42, 0.06), rgba(92, 26, 42, 0.12));
+  }
+
+  .date-box::before,
+  .date-box::after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid var(--burgundy);
+    transform: rotate(45deg);
+    background: var(--cream);
+  }
+
+  .date-box::before {
+    top: -5px;
+    left: 50%;
+    margin-left: -4px;
+  }
+
+  .date-box::after {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -4px;
+  }
+
+  .date {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--burgundy);
+  }
+
+  /* Family section */
+  .family-section {
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .family-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+
+  .family-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .headshot {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--gold-light);
+    box-shadow: 0 2px 8px rgba(92, 26, 42, 0.12);
+    transition: transform 0.2s;
+  }
+
+  .headshot:hover {
+    transform: scale(1.08);
+  }
+
+  /* Bottom ornament */
+  .bottom-ornament {
+    margin-top: auto;
+    padding-top: 12px;
+    text-align: center;
+    color: var(--gold);
+    opacity: 0.3;
+    font-size: 14px;
+    letter-spacing: 6px;
+  }
+
+  /* Print styles */
+  @media print {
+    body {
+      padding: 0;
+      background: var(--cream);
+    }
+    .flyer {
+      width: 100%;
+      min-height: 100vh;
+      page-break-after: avoid;
+    }
+    .headshot:hover {
+      transform: none;
+    }
+  }
+
+  /* Screen responsive */
+  @media screen and (max-width: 600px) {
+    .flyer {
+      width: 100%;
+      min-height: 100vh;
+    }
+    .content {
+      padding: 28px 20px;
+    }
+    .title { font-size: 22px; letter-spacing: 4px; }
+    .title-sub { font-size: 13px; }
+    .photo { width: 240px; height: 260px; }
+    .name { font-size: 26px; }
+    .name-last { font-size: 36px; letter-spacing: 8px; }
+    .date { font-size: 18px; }
+    .headshot { width: 58px; height: 58px; }
+    .family-grid { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+  <div class="inner-frame"></div>
+
+  <div class="corner corner--tl">&#10053;</div>
+  <div class="corner corner--tr">&#10053;</div>
+  <div class="corner corner--bl">&#10053;</div>
+  <div class="corner corner--br">&#10053;</div>
+
+  <div class="content">
+
+    <div class="top-ornament">
+      <div class="line"></div>
+      <span>&#10044;</span>
+      <div class="line"></div>
+    </div>
+
+    <h1 class="title">Celebration</h1>
+    <div class="title-sub">Ceremony</div>
+
+    <div class="divider">
+      <div class="line"></div>
+      <span class="diamond">&#9830;</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="photo-wrapper">
+      <div class="photo-frame">
+        <div class="photo-frame-inner">
+          <img src="./main.JPG" alt="Mama Cecilia Gyan" class="photo">
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-ornament">&#8212; &#10047; &#8212;</div>
+
+    <p class="announcement">
+      It is with a heavy heart we announce<br>
+      the passing of our mother
+    </p>
+
+    <div class="divider">
+      <div class="line"></div>
+      <span class="diamond">&#9830;</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="name-section">
+      <div class="name">
+        Mama Cecilia
+        <span class="name-last">Gyan</span>
+      </div>
+    </div>
+
+    <div class="cross">&#10013;</div>
+
+    <div class="save-date-section">
+      <div class="save-label">Save the Date</div>
+      <div class="date-box">
+        <span class="date">March 28, 2026</span>
+      </div>
+    </div>
+
+    <div class="family-section">
+      <div class="family-label">&#8212; Family &#8212;</div>
+      <div class="family-grid">
+        <img src="./IMG_0368.JPG" alt="Family" class="headshot">
+        <img src="./IMG_0369.JPG" alt="Family" class="headshot">
+        <img src="./IMG_0382.JPG" alt="Family" class="headshot">
+        <img src="./6da9e12b-2a5e-4af6-96d7-b2df6ef4d7c9.JPG" alt="Family" class="headshot">
+        <img src="./fbb7901c-c649-479e-b9fe-fee670188f66.JPG" alt="Family" class="headshot">
+        <img src="./IMG_0377.JPG" alt="Family" class="headshot">
+        <img src="./ab84184d-1d29-4531-9b0f-f3e783f0e003.JPG" alt="Family" class="headshot">
+        <img src="./919c5efe-5127-493f-b185-2aa499c65ebf.JPG" alt="Family" class="headshot">
+        <img src="./0645dac7-04b3-41f0-9351-7af13ae66825.JPG" alt="Family" class="headshot">
+        <img src="./IMG_0384.JPG" alt="Family" class="headshot">
+        <img src="./IMG_0366.JPG" alt="Family" class="headshot">
+      </div>
+    </div>
+
+    <div class="bottom-ornament">&#10053; &#10053; &#10053;</div>
+
+  </div>
+</div>
+
+</body>
+</html>

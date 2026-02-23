@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funeral Flyer — Obaapanyin Cecilia Gyan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D48B;
+    --gold-dark: #8B6914;
+    --gold-deep: #6B4E0A;
+    --cream: #FDF8F0;
+    --dark-bg: #2A0E16;
+    --burgundy: #4A1220;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: #1a1a1a;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    color: var(--cream);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ============================================
+     CONTROLS (screen only)
+     ============================================ */
+  .controls {
+    max-width: 920px;
+    margin: 24px auto;
+    padding: 20px 28px;
+    background: #2c2c2c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #eee;
+    font-size: 14px;
+  }
+
+  .controls label {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .controls select {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #3a3a3a;
+    color: #eee;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 220px;
+  }
+
+  .controls button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--gold);
+    background: var(--gold-dark);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .controls button:hover {
+    background: var(--gold);
+    color: #1a1a1a;
+  }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 0 60px;
+  }
+
+  .page-label {
+    font-family: -apple-system, sans-serif;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: -30px;
+  }
+
+  /* ============================================
+     PAGE COMMON
+     ============================================ */
+  .page {
+    width: 900px;
+    height: 1200px;
+    position: relative;
+    overflow: hidden;
+    background: var(--dark-bg);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .page-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../bkgd.JPG') center/cover no-repeat;
+    opacity: 0.85;
+  }
+
+  /* Double border frame */
+  .page::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1.5px solid rgba(201, 168, 76, 0.5);
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .inner-frame {
+    position: absolute;
+    inset: 18px;
+    border: 0.75px solid rgba(201, 168, 76, 0.2);
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  /* ============================================
+     FRONT PAGE
+     ============================================ */
+
+  /* Ghosted main photo */
+  .front-ghost-photo {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 620px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .front-ghost-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+    opacity: 0.28;
+    mask-image: radial-gradient(ellipse 90% 85% at 50% 40%, black 30%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 40%, black 30%, transparent 72%);
+  }
+
+  /* Front content */
+  .front-content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px 36px;
+  }
+
+  .front-header {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .cel-title {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cream);
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .cel-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin: 10px 0 14px;
+  }
+
+  .cel-name {
+    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-align: center;
+    line-height: 1.15;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  }
+
+  /* Ornamental divider */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+    width: 280px;
+  }
+
+  .ornament .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .ornament svg {
+    width: 40px;
+    height: 18px;
+    fill: var(--gold);
+    opacity: 0.8;
+  }
+
+  .cel-years {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  /* Spacer to push content down over the ghosted photo */
+  .front-spacer {
+    flex: 1;
+    min-height: 280px;
+  }
+
+  /* Date */
+  .cel-date {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 16px;
+  }
+
+  /* Bottom row: vintage frame + candle */
+  .front-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 30px;
+    margin-bottom: 6px;
+  }
+
+  /* Gold ornate frame */
+  .vintage-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vintage-frame {
+    padding: 7px;
+    background: linear-gradient(145deg, #D4A843, #8B6914, #DAA520, #B8860B, #D4A843);
+    box-shadow:
+      0 0 0 1px var(--gold-deep),
+      0 0 0 3px var(--gold),
+      0 0 0 4px var(--gold-deep),
+      inset 0 0 0 1px rgba(255,215,0,0.3),
+      0 6px 20px rgba(0,0,0,0.6);
+  }
+
+  .vintage-frame img {
+    display: block;
+    width: 140px;
+    height: 175px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid #1a0a0a;
+  }
+
+  .vintage-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* Candle */
+  .candle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .candle-svg {
+    width: 60px;
+    height: 180px;
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.22; transform: scale(1.06); }
+  }
+
+  .flame-glow { animation: flicker 3s ease-in-out infinite; }
+
+  /* Forever text */
+  .forever-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: var(--gold-light);
+    text-align: right;
+    width: 100%;
+    padding-right: 50px;
+    margin-top: -12px;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  /* ============================================
+     PERSONALIZED INVITATION BAND
+     ============================================ */
+  .invited-section {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .invited-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 8px;
+    width: 180px;
+  }
+
+  .invited-divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .invited-divider .dot {
+    color: var(--gold);
+    font-size: 8px;
+  }
+
+  .invited-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .invited-people {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .invited-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .invited-photo {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    background: var(--burgundy);
+  }
+
+  .invited-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .invited-amp {
+    font-family: 'Great Vibes', cursive;
+    font-size: 26px;
+    color: var(--gold);
+    margin: 0 4px;
+    padding-bottom: 18px;
+  }
+
+  /* ============================================
+     BACK PAGE
+     ============================================ */
+  .back-content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 60px 80px 50px;
+  }
+
+  .back-title {
+    font-family: 'Playfair Display', 'Cinzel', serif;
+    font-size: 50px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  }
+
+  .back-ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 320px;
+    margin-bottom: 40px;
+  }
+
+  .back-ornament .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .back-ornament svg {
+    width: 44px;
+    height: 20px;
+    fill: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* Event details */
+  .event-block {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 520px;
+  }
+
+  .event-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
+
+  .event-block .highlight {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .event-block .venue-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .event-block .venue-address {
+    font-size: 20px;
+    color: rgba(253, 248, 240, 0.85);
+  }
+
+  .event-block .bold-time {
+    font-weight: 700;
+  }
+
+  .event-block .cemetery-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .event-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    margin-top: 10px;
+    max-width: 400px;
+  }
+
+  /* Contact info */
+  .contact-info {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-info .phone {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  /* Back bottom decoration */
+  .back-bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    position: relative;
+  }
+
+  .back-candle-wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .back-candle-svg {
+    width: 50px;
+    height: 160px;
+  }
+
+  /* Vintage frame on back */
+  .back-vintage-frame {
+    padding: 5px;
+    background: linear-gradient(145deg, #D4A843, #8B6914, #DAA520, #B8860B, #D4A843);
+    box-shadow:
+      0 0 0 1px var(--gold-deep),
+      0 0 0 2px var(--gold),
+      0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  .back-vintage-frame img {
+    display: block;
+    width: 110px;
+    height: 138px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 1.5px solid #1a0a0a;
+  }
+
+  /* Rose decoration (CSS-only) */
+  .roses-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    opacity: 0.6;
+  }
+
+  .rose {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ============================================
+     PRINT STYLES
+     ============================================ */
+  @media print {
+    html, body {
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .controls, .page-label {
+      display: none !important;
+    }
+
+    .page-container {
+      padding: 0;
+      gap: 0;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      box-shadow: none;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE (screen)
+     ============================================ */
+  @media screen and (max-width: 940px) {
+    .page {
+      width: 96vw;
+      height: calc(96vw * 4 / 3);
+    }
+    .controls {
+      margin: 12px 2%;
+    }
+    .cel-title { font-size: 32px; }
+    .cel-name { font-size: 36px; }
+    .cel-date { font-size: 30px; }
+    .back-title { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     CONTROL PANEL (screen only)
+     ============================================ -->
+<div class="controls">
+  <label for="childSelect">Generate for:</label>
+  <select id="childSelect"></select>
+  <button onclick="window.print()">Print (Front & Back)</button>
+  <button onclick="generateAll()">Preview All</button>
+</div>
+
+<div class="page-container">
+
+  <div class="page-label">Front</div>
+
+  <!-- ============================================
+       FRONT PAGE — Celebration of Life
+       ============================================ -->
+  <div class="page front" id="front-page">
+    <div class="page-bg"></div>
+    <div class="inner-frame"></div>
+
+    <!-- Ghosted main photo -->
+    <div class="front-ghost-photo">
+      <img id="deceased-main-photo" src="../main.JPG" alt="Obaapanyin Cecilia Gyan">
+    </div>
+
+    <div class="front-content">
+
+      <!-- Header text -->
+      <div class="front-header">
+        <h1 class="cel-title">Celebration of Life</h1>
+        <p class="cel-subtitle">In Loving Memory of</p>
+        <h2 class="cel-name" id="deceased-name">Obaapanyin<br>Cecilia Gyan</h2>
+      </div>
+
+      <!-- Ornamental divider -->
+      <div class="ornament">
+        <div class="line"></div>
+        <svg viewBox="0 0 40 18">
+          <path d="M0 9 C6 9, 8 3, 14 3 C16 3, 17 5, 20 5 C23 5, 24 3, 26 3 C32 3, 34 9, 40 9 C34 9, 32 15, 26 15 C24 15, 23 13, 20 13 C17 13, 16 15, 14 15 C8 15, 6 9, 0 9Z"/>
+        </svg>
+        <div class="line"></div>
+      </div>
+
+      <!-- Years -->
+      <p class="cel-years" id="deceased-years">1944 — 2026</p>
+
+      <!-- Spacer (ghosted photo shows through) -->
+      <div class="front-spacer"></div>
+
+      <!-- Date -->
+      <h3 class="cel-date" id="funeral-date-display">March 28, 2026</h3>
+
+      <!-- Vintage frame + candle row -->
+      <div class="front-bottom-row">
+        <div class="vintage-section">
+          <div class="vintage-frame">
+            <img id="deceased-vintage-photo" src="../IMG_0369.JPG" alt="Sweet Sixteen">
+          </div>
+          <p class="vintage-caption" id="vintage-caption">AKA ~ Sweet Sixteen (16)</p>
+        </div>
+
+        <div class="candle-section">
+          <svg class="candle-svg" viewBox="0 0 60 180" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="flame-glow" cx="30" cy="18" rx="18" ry="26" fill="rgba(245,200,60,0.15)"/>
+            <path d="M30 2 C32 10, 40 18, 40 28 C40 36, 36 40, 30 40 C24 40, 20 36, 20 28 C20 18, 28 10, 30 2Z" fill="#D4920F"/>
+            <path d="M30 8 C31 14, 36 20, 36 28 C36 33, 34 35, 30 35 C26 35, 24 33, 24 28 C24 20, 29 14, 30 8Z" fill="#F0C030"/>
+            <path d="M30 16 C30.5 20, 33 24, 33 29 C33 32, 32 33, 30 33 C28 33, 27 32, 27 29 C27 24, 29.5 20, 30 16Z" fill="#FFF3D0"/>
+            <line x1="30" y1="30" x2="30" y2="42" stroke="#4A3520" stroke-width="1.5"/>
+            <rect x="20" y="42" width="20" height="90" rx="2" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.8"/>
+            <path d="M20 54 C18 56, 18 64, 20 64" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.6"/>
+            <path d="M40 68 C42 70, 42 78, 40 78" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.6"/>
+            <path d="M20 84 C18 86, 18 92, 20 92" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.6"/>
+            <ellipse cx="30" cy="132" rx="20" ry="6" fill="#C9A84C"/>
+            <rect x="11" y="132" width="38" height="18" rx="4" fill="#9E7A2E"/>
+            <ellipse cx="30" cy="150" rx="20" ry="6" fill="#6B5220"/>
+            <ellipse cx="30" cy="134" rx="18" ry="4" fill="none" stroke="#E8D48B" stroke-width="0.8"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Forever text -->
+      <p class="forever-text">Forever In Our Hearts</p>
+
+      <!-- Personalized invitation section -->
+      <div class="invited-section" id="invited-section">
+        <div class="invited-divider">
+          <div class="line"></div>
+          <span class="dot">&#10044;</span>
+          <div class="line"></div>
+        </div>
+        <p class="invited-label">Cordially invited by</p>
+        <div class="invited-people">
+          <div class="invited-person">
+            <img class="invited-photo" id="child-photo" src="../headshots/1.JPG" alt="Child">
+            <span class="invited-name" id="child-name">Nana Yaa Putu</span>
+          </div>
+          <span class="invited-amp">&amp;</span>
+          <div class="invited-person">
+            <img class="invited-photo" id="spouse-photo" src="" alt="Spouse">
+            <span class="invited-name" id="spouse-name">Spouse Name</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-label">Back</div>
+
+  <!-- ============================================
+       BACK PAGE — Funeral Arrangements
+       ============================================ -->
+  <div class="page back" id="back-page">
+    <div class="page-bg"></div>
+    <div class="inner-frame"></div>
+
+    <div class="back-content">
+
+      <h1 class="back-title">Funeral Arrangements</h1>
+
+      <!-- Ornamental divider -->
+      <div class="back-ornament">
+        <div class="line"></div>
+        <svg viewBox="0 0 44 20">
+          <path d="M0 10 C7 10, 9 3, 16 3 C18 3, 19 5, 22 5 C25 5, 26 3, 28 3 C35 3, 37 10, 44 10 C37 10, 35 17, 28 17 C26 17, 25 15, 22 15 C19 15, 18 17, 16 17 C9 17, 7 10, 0 10Z"/>
+        </svg>
+        <div class="line"></div>
+      </div>
+
+      <!-- Calling Hours -->
+      <div class="event-block">
+        <p>
+          Calling Hours will be held on<br>
+          <span class="highlight" id="back-calling-date">Saturday, March 28, 2026,</span> from<br>
+          <span class="highlight" id="back-calling-times">9:00 a.m. to 11:00 a.m.</span> at:
+        </p>
+        <p>
+          <span class="venue-name" id="back-venue-name">Mercadante Funeral Home &amp; Chapel</span>
+          <span class="venue-address" id="back-venue-address">370 Plantation Street<br>Worcester, MA 01605</span>
+        </p>
+      </div>
+
+      <!-- Funeral Service -->
+      <div class="event-block">
+        <p>
+          A Funeral Service will follow at <span class="bold-time" id="back-service-time">11:00 a.m.</span><br>
+          <span id="back-service-note">at the funeral home.</span>
+        </p>
+      </div>
+
+      <!-- Interment -->
+      <div class="event-block">
+        <p>Interment will take place at:</p>
+        <p>
+          <span class="cemetery-name" id="back-cemetery-name">Mountain View Cemetery</span>
+          <span class="venue-address" id="back-cemetery-location">Shrewsbury, Massachusetts</span>
+        </p>
+      </div>
+
+      <!-- Exit note -->
+      <p class="event-note" id="back-exit-note">
+        Please note: We must exit the cemetery<br>
+        no later than <strong>2:00 p.m.</strong>
+      </p>
+
+      <!-- Contact -->
+      <p class="contact-info" id="contact-block">
+        For information, please call<br>
+        <span class="phone" id="contact-phone">(508) 555-0123</span>
+      </p>
+
+      <!-- Bottom decoration -->
+      <div class="back-bottom">
+        <div class="back-candle-wrapper">
+          <svg class="back-candle-svg" viewBox="0 0 50 160" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="flame-glow" cx="25" cy="16" rx="15" ry="22" fill="rgba(245,200,60,0.14)"/>
+            <path d="M25 2 C27 9, 33 15, 33 24 C33 30, 30 33, 25 33 C20 33, 17 30, 17 24 C17 15, 23 9, 25 2Z" fill="#D4920F"/>
+            <path d="M25 7 C26 12, 30 17, 30 24 C30 28, 28 30, 25 30 C22 30, 20 28, 20 24 C20 17, 24 12, 25 7Z" fill="#F0C030"/>
+            <path d="M25 14 C25.5 17, 27 20, 27 25 C27 27, 26 28, 25 28 C24 28, 23 27, 23 25 C23 20, 24.5 17, 25 14Z" fill="#FFF3D0"/>
+            <line x1="25" y1="26" x2="25" y2="35" stroke="#4A3520" stroke-width="1.3"/>
+            <rect x="17" y="35" width="16" height="78" rx="1.5" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.7"/>
+            <path d="M17 47 C15 49, 15 55, 17 55" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.5"/>
+            <path d="M33 62 C35 64, 35 70, 33 70" fill="#F8F2E4" stroke="#C9A84C" stroke-width="0.5"/>
+            <ellipse cx="25" cy="113" rx="17" ry="5" fill="#C9A84C"/>
+            <rect x="9" y="113" width="32" height="15" rx="3" fill="#9E7A2E"/>
+            <ellipse cx="25" cy="128" rx="17" ry="5" fill="#6B5220"/>
+          </svg>
+        </div>
+
+        <!-- Framed photo of deceased -->
+        <div class="back-vintage-frame">
+          <img id="back-deceased-photo" src="../main.JPG" alt="Obaapanyin Cecilia Gyan">
+        </div>
+
+        <!-- Roses (SVG) -->
+        <div class="roses-row">
+          <svg class="rose" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="18" cy="16" rx="10" ry="11" fill="#F5EDE0" opacity="0.9"/>
+            <path d="M18 5 C14 8, 10 10, 9 15 C8 20, 12 24, 18 24 C24 24, 28 20, 27 15 C26 10, 22 8, 18 5Z" fill="#EDE3D4" stroke="#D4C9B5" stroke-width="0.5"/>
+            <path d="M18 8 C15 10, 12 13, 12 16 C12 20, 15 22, 18 22 C21 22, 24 20, 24 16 C24 13, 21 10, 18 8Z" fill="#F5EDE0" stroke="#D4C9B5" stroke-width="0.4"/>
+            <circle cx="18" cy="15" r="4" fill="#FDF8F0" stroke="#E5DDD0" stroke-width="0.3"/>
+            <line x1="18" y1="24" x2="18" y2="36" stroke="#6B7D52" stroke-width="1.5"/>
+            <path d="M18 28 C15 27, 13 28, 12 30" fill="none" stroke="#6B7D52" stroke-width="0.8"/>
+          </svg>
+          <svg class="rose" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="18" cy="16" rx="10" ry="11" fill="#F5EDE0" opacity="0.9"/>
+            <path d="M18 5 C14 8, 10 10, 9 15 C8 20, 12 24, 18 24 C24 24, 28 20, 27 15 C26 10, 22 8, 18 5Z" fill="#EDE3D4" stroke="#D4C9B5" stroke-width="0.5"/>
+            <path d="M18 8 C15 10, 12 13, 12 16 C12 20, 15 22, 18 22 C21 22, 24 20, 24 16 C24 13, 21 10, 18 8Z" fill="#F5EDE0" stroke="#D4C9B5" stroke-width="0.4"/>
+            <circle cx="18" cy="15" r="4" fill="#FDF8F0" stroke="#E5DDD0" stroke-width="0.3"/>
+            <line x1="18" y1="24" x2="18" y2="36" stroke="#6B7D52" stroke-width="1.5"/>
+            <path d="M18 30 C21 29, 23 30, 24 32" fill="none" stroke="#6B7D52" stroke-width="0.8"/>
+          </svg>
+          <svg class="rose" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="18" cy="16" rx="10" ry="11" fill="#F5EDE0" opacity="0.9"/>
+            <path d="M18 5 C14 8, 10 10, 9 15 C8 20, 12 24, 18 24 C24 24, 28 20, 27 15 C26 10, 22 8, 18 5Z" fill="#EDE3D4" stroke="#D4C9B5" stroke-width="0.5"/>
+            <path d="M18 8 C15 10, 12 13, 12 16 C12 20, 15 22, 18 22 C21 22, 24 20, 24 16 C24 13, 21 10, 18 8Z" fill="#F5EDE0" stroke="#D4C9B5" stroke-width="0.4"/>
+            <circle cx="18" cy="15" r="4" fill="#FDF8F0" stroke="#E5DDD0" stroke-width="0.3"/>
+            <line x1="18" y1="24" x2="18" y2="36" stroke="#6B7D52" stroke-width="1.5"/>
+            <path d="M18 28 C15 27, 13 28, 12 30" fill="none" stroke="#6B7D52" stroke-width="0.8"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================
+     DATA & TEMPLATE ENGINE
+     ============================================ -->
+<script>
+  // ---- CONFIG (mirrors config.json) ----
+  const CONFIG = {
+    deceased: {
+      title: "Obaapanyin",
+      firstName: "Cecilia",
+      lastName: "Gyan",
+      fullName: "Obaapanyin Cecilia Gyan",
+      motherTitle: "Mama",
+      alias: "Sweet Sixteen (16)",
+      aliasDisplay: "Sweet 16",
+      birthYear: 1944,
+      deathYear: 2026,
+      mainPhoto: "../main.JPG",
+      vintagePhoto: "../IMG_0369.JPG",
+      vintageCaption: "AKA ~ Sweet Sixteen (16)"
+    },
+    funeralDate: "March 28, 2026",
+    funeralDateFull: "Saturday, March 28, 2026",
+    events: {
+      callingHours: {
+        date: "Saturday, March 28, 2026,",
+        startTime: "9:00 a.m.",
+        endTime: "11:00 a.m.",
+        venue: "Mercadante Funeral Home & Chapel",
+        address: "370 Plantation Street",
+        city: "Worcester",
+        state: "MA",
+        zip: "01605"
+      },
+      funeralService: {
+        time: "11:00 a.m.",
+        note: "at the funeral home."
+      },
+      interment: {
+        venue: "Mountain View Cemetery",
+        city: "Shrewsbury",
+        state: "Massachusetts",
+        exitTime: "2:00 p.m."
+      }
+    },
+    contact: {
+      phone: "(508) 555-0123",
+      label: "For information, please call"
+    }
+  };
+
+  // ---- FAMILY DATA (mirrors family-data.json) ----
+  const FAMILY = [
+    {
+      id: "nana-yaa",
+      displayName: "Nana Yaa Putu",
+      relationship: "Daughter",
+      photo: "../headshots/1.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-nana-yaa.jpg" }
+    },
+    {
+      id: "hannah",
+      displayName: "Hannah Putu",
+      relationship: "Daughter",
+      photo: "../headshots/2.png",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-hannah.jpg" }
+    },
+    {
+      id: "josephine",
+      displayName: "Josephine Putu",
+      relationship: "Daughter",
+      photo: "../headshots/3.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-josephine.jpg" }
+    },
+    {
+      id: "kwabena-nimo",
+      displayName: "Kwabena Nimo",
+      relationship: "Son",
+      photo: "../headshots/4.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-nimo.jpg" }
+    },
+    {
+      id: "kwabena-bosompem",
+      displayName: "Kwabena Bosompem",
+      relationship: "Son",
+      photo: "../headshots/5.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-bosompem.jpg" }
+    },
+    {
+      id: "rev-dubois",
+      displayName: "Rev. Dubois Nyamikeh",
+      relationship: "Son-in-law",
+      photo: "../headshots/6.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-dubois.jpg" }
+    },
+    {
+      id: "vivian",
+      displayName: "Vivian Antwi",
+      relationship: "Daughter",
+      photo: "../headshots/7.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-vivian.jpg" }
+    },
+    {
+      id: "ekow",
+      displayName: "Ekow Quainoo",
+      relationship: "Son",
+      photo: "../headshots/8.jpeg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-ekow.jpg" }
+    },
+    {
+      id: "kennedy",
+      displayName: "Kennedy Boateng",
+      relationship: "Son",
+      photo: "../headshots/9.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-kennedy.jpg" }
+    },
+    {
+      id: "kofi",
+      displayName: "Kofi Amoako",
+      relationship: "Son",
+      photo: "../headshots/10.png",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-kofi.jpg" }
+    }
+  ];
+
+  // ---- TEMPLATE ENGINE ----
+
+  // Populate dropdown
+  const select = document.getElementById('childSelect');
+  FAMILY.forEach((child, i) => {
+    const opt = document.createElement('option');
+    opt.value = child.id;
+    opt.textContent = `${child.displayName} (${child.relationship})`;
+    select.appendChild(opt);
+  });
+
+  // Render selected child's flyer
+  function renderFlyer(childId) {
+    const child = FAMILY.find(c => c.id === childId);
+    if (!child) return;
+
+    // Front - Personalized section
+    document.getElementById('child-photo').src = child.photo;
+    document.getElementById('child-name').textContent = child.displayName;
+    document.getElementById('spouse-photo').src = child.spouse.photo;
+    document.getElementById('spouse-name').textContent = child.spouse.displayName;
+
+    // Front - Deceased info (from config)
+    document.getElementById('deceased-main-photo').src = CONFIG.deceased.mainPhoto;
+    document.getElementById('deceased-vintage-photo').src = CONFIG.deceased.vintagePhoto;
+    document.getElementById('deceased-name').innerHTML =
+      CONFIG.deceased.title + '<br>' + CONFIG.deceased.firstName + ' ' + CONFIG.deceased.lastName;
+    document.getElementById('deceased-years').textContent =
+      CONFIG.deceased.birthYear + ' — ' + CONFIG.deceased.deathYear;
+    document.getElementById('vintage-caption').textContent = CONFIG.deceased.vintageCaption;
+    document.getElementById('funeral-date-display').textContent = CONFIG.funeralDate;
+
+    // Back - Event details (from config)
+    const e = CONFIG.events;
+    document.getElementById('back-calling-date').textContent = e.callingHours.date;
+    document.getElementById('back-calling-times').textContent =
+      e.callingHours.startTime + ' to ' + e.callingHours.endTime;
+    document.getElementById('back-venue-name').textContent = e.callingHours.venue;
+    document.getElementById('back-venue-address').innerHTML =
+      e.callingHours.address + '<br>' + e.callingHours.city + ', ' + e.callingHours.state + ' ' + e.callingHours.zip;
+    document.getElementById('back-service-time').textContent = e.funeralService.time;
+    document.getElementById('back-service-note').textContent = e.funeralService.note;
+    document.getElementById('back-cemetery-name').textContent = e.interment.venue;
+    document.getElementById('back-cemetery-location').textContent =
+      e.interment.city + ', ' + e.interment.state;
+    document.getElementById('back-exit-note').innerHTML =
+      'Please note: We must exit the cemetery<br>no later than <strong>' + e.interment.exitTime + '</strong>';
+    document.getElementById('contact-phone').textContent = CONFIG.contact.phone;
+    document.getElementById('back-deceased-photo').src = CONFIG.deceased.mainPhoto;
+  }
+
+  // Handle dropdown change
+  select.addEventListener('change', () => renderFlyer(select.value));
+
+  // Initial render
+  renderFlyer(FAMILY[0].id);
+
+  // Generate All — opens a preview showing all versions stacked
+  function generateAll() {
+    const names = FAMILY.map(c => c.displayName).join(', ');
+    alert('Flyer versions available for:\n\n' + names + '\n\nSelect each from the dropdown to preview, then print individually.');
+  }
+</script>
+
+</body>
+</html>

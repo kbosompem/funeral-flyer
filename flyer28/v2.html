@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funeral Flyer — Obaapanyin Cecilia Gyan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D48B;
+    --gold-dark: #8B6914;
+    --cream: #FDF8F0;
+    --page-w: 650px;
+    --page-h: 1000px;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: #111;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ============================================
+     CONTROLS
+     ============================================ */
+  .controls {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 16px 24px;
+    background: #222;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #ccc;
+    font-size: 13px;
+  }
+
+  .controls label { font-weight: 600; color: var(--gold); }
+
+  .controls select {
+    padding: 7px 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #333;
+    color: #eee;
+    font-size: 13px;
+    cursor: pointer;
+    min-width: 220px;
+  }
+
+  .controls button {
+    padding: 7px 18px;
+    border-radius: 5px;
+    border: 1px solid var(--gold-dark);
+    background: #2a1a0a;
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .controls button:hover {
+    background: var(--gold-dark);
+    color: var(--cream);
+  }
+
+  /* ============================================
+     PAGE LAYOUT
+     ============================================ */
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding: 16px 0 60px;
+  }
+
+  .page-label {
+    font-family: -apple-system, sans-serif;
+    color: #555;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: -28px;
+  }
+
+  .page {
+    width: var(--page-w);
+    height: var(--page-h);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.7);
+    background: #1a0a0e;
+  }
+
+  .page-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ============================================
+     FRONT — Personalized overlay at bottom
+     ============================================ */
+  .invited-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px 24px 22px;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(12, 5, 8, 0.6) 35%,
+      rgba(12, 5, 8, 0.92) 70%,
+      rgba(12, 5, 8, 0.98) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+  }
+
+  .invited-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 140px;
+    margin-bottom: 6px;
+  }
+
+  .invited-divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .invited-divider .dot {
+    color: var(--gold);
+    font-size: 7px;
+    opacity: 0.7;
+  }
+
+  .invited-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+
+  .invited-people {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .invited-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .invited-photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    background: #2a1520;
+  }
+
+  .invited-name {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  }
+
+  .invited-amp {
+    font-family: 'Great Vibes', cursive;
+    font-size: 24px;
+    color: var(--gold);
+    padding-bottom: 16px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* ============================================
+     PRINT
+     ============================================ */
+  @media print {
+    html, body {
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .controls, .page-label {
+      display: none !important;
+    }
+
+    .page-container {
+      padding: 0;
+      gap: 0;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      box-shadow: none;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media screen and (max-width: 700px) {
+    :root {
+      --page-w: 94vw;
+      --page-h: calc(94vw * 1600 / 1050);
+    }
+    .controls { margin: 10px 3%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <label for="childSelect">Generate for:</label>
+  <select id="childSelect"></select>
+  <button onclick="window.print()">Print Front &amp; Back</button>
+</div>
+
+<div class="page-container">
+
+  <div class="page-label">Front</div>
+
+  <!-- ==================== FRONT PAGE ==================== -->
+  <div class="page front" id="front-page">
+    <img class="page-image" src="front-cover.jpeg" alt="Celebration of Life — Obaapanyin Cecilia Gyan">
+
+    <!-- Personalized overlay -->
+    <div class="invited-overlay" id="invited-section">
+      <div class="invited-divider">
+        <div class="line"></div>
+        <span class="dot">&#10044;</span>
+        <div class="line"></div>
+      </div>
+      <p class="invited-label">Cordially invited by</p>
+      <div class="invited-people">
+        <div class="invited-person">
+          <img class="invited-photo" id="child-photo" src="../headshots/1.JPG" alt="">
+          <span class="invited-name" id="child-name">Nana Yaa Putu</span>
+        </div>
+        <span class="invited-amp">&amp;</span>
+        <div class="invited-person">
+          <img class="invited-photo" id="spouse-photo" src="" alt="">
+          <span class="invited-name" id="spouse-name">Spouse Name</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-label">Back</div>
+
+  <!-- ==================== BACK PAGE ==================== -->
+  <div class="page back" id="back-page">
+    <img class="page-image" src="back-clean.jpeg" alt="Funeral Arrangements">
+  </div>
+
+</div>
+
+<!-- ============================================
+     DATA & TEMPLATE ENGINE
+     ============================================ -->
+<script>
+  // ---- FAMILY DATA (mirrors family-data.json) ----
+  const FAMILY = [
+    {
+      id: "nana-yaa",
+      displayName: "Nana Yaa Putu",
+      relationship: "Daughter",
+      photo: "../headshots/1.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-nana-yaa.jpg" }
+    },
+    {
+      id: "hannah",
+      displayName: "Hannah Putu",
+      relationship: "Daughter",
+      photo: "../headshots/2.png",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-hannah.jpg" }
+    },
+    {
+      id: "josephine",
+      displayName: "Josephine Putu",
+      relationship: "Daughter",
+      photo: "../headshots/3.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-josephine.jpg" }
+    },
+    {
+      id: "kwabena-nimo",
+      displayName: "Kwabena Nimo",
+      relationship: "Son",
+      photo: "../headshots/4.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-nimo.jpg" }
+    },
+    {
+      id: "kwabena-bosompem",
+      displayName: "Kwabena Bosompem",
+      relationship: "Son",
+      photo: "../headshots/5.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-bosompem.jpg" }
+    },
+    {
+      id: "rev-dubois",
+      displayName: "Rev. Dubois Nyamikeh",
+      relationship: "Son-in-law",
+      photo: "../headshots/6.JPG",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-dubois.jpg" }
+    },
+    {
+      id: "vivian",
+      displayName: "Vivian Antwi",
+      relationship: "Daughter",
+      photo: "../headshots/7.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-vivian.jpg" }
+    },
+    {
+      id: "ekow",
+      displayName: "Ekow Quainoo",
+      relationship: "Son",
+      photo: "../headshots/8.jpeg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-ekow.jpg" }
+    },
+    {
+      id: "kennedy",
+      displayName: "Kennedy Boateng",
+      relationship: "Son",
+      photo: "../headshots/9.jpg",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-kennedy.jpg" }
+    },
+    {
+      id: "kofi",
+      displayName: "Kofi Amoako",
+      relationship: "Son",
+      photo: "../headshots/10.png",
+      spouse: { displayName: "Spouse Name", photo: "photos/spouse-kofi.jpg" }
+    }
+  ];
+
+  // Populate dropdown
+  const select = document.getElementById('childSelect');
+  FAMILY.forEach(child => {
+    const opt = document.createElement('option');
+    opt.value = child.id;
+    opt.textContent = child.displayName + ' (' + child.relationship + ')';
+    select.appendChild(opt);
+  });
+
+  // Render selected child
+  function renderFlyer(childId) {
+    const child = FAMILY.find(c => c.id === childId);
+    if (!child) return;
+
+    document.getElementById('child-photo').src = child.photo;
+    document.getElementById('child-name').textContent = child.displayName;
+    document.getElementById('spouse-photo').src = child.spouse.photo;
+    document.getElementById('spouse-name').textContent = child.spouse.displayName;
+  }
+
+  select.addEventListener('change', () => renderFlyer(select.value));
+  renderFlyer(FAMILY[0].id);
+</script>
+
+</body>
+</html>
