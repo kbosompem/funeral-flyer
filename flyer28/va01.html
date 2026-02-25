@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funeral Flyer — Obaapanyin Cecilia Gyan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D48B;
+    --gold-dark: #8B6914;
+    --cream: #FDF8F0;
+    --page-w: 650px;
+    --page-h: 836px;
+  }
+
+  body {
+    background: #111;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--cream);
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* ============================================
+     CONTROLS
+     ============================================ */
+  .controls {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 16px 24px;
+    background: #222;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+    color: #ccc;
+    font-size: 13px;
+  }
+
+  .controls select {
+    padding: 7px;
+    background: #333;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+
+  .controls button {
+    padding: 7px 15px;
+    cursor: pointer;
+    background: #2a1a0a;
+    color: var(--gold-light);
+    border: 1px solid var(--gold-dark);
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .controls button:hover { background: var(--gold-dark); color: #fff; }
+
+  /* ============================================
+     PAGE LAYOUT
+     ============================================ */
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding-bottom: 60px;
+  }
+
+  .page {
+    width: var(--page-w);
+    height: var(--page-h);
+    position: relative;
+    overflow: hidden;
+    background: #1a0a0e;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  }
+
+  .page-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  /* ============================================
+     FRONT TEXT (V12 Style Refinements)
+     ============================================ */
+  .front-text-overlay {
+    position: absolute;
+    top: 8%; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .front-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
+  .front-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .front-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 54px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 12px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+  }
+
+  .front-years {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+  }
+
+  /* ============================================
+     INVITED OVERLAY (Bottom Right Fix)
+     ============================================ */
+  .invited-overlay {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+  }
+
+  .invited-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .invited-people {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .invited-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+  }
+
+  .invited-photo {
+    width: 48px; height: 48px;
+    border-radius: 4px;
+    border: 1.5px solid var(--gold);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    margin-bottom: 4px;
+  }
+
+  .invited-name {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--gold-light);
+    line-height: 1.2;
+  }
+
+  .invited-amp {
+    font-family: 'Great Vibes', cursive;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 15px;
+  }
+
+  .hidden { display: none !important; }
+
+  /* Back styles simplified for brevity, reuse your original grid here */
+  .back-content { padding: 40px; text-align: center; position: relative; z-index: 5; }
+  
+  #status-text { margin-left: 20px; font-weight: bold; }
+
+  @media print { .controls { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <label>Select Person:</label>
+  <select id="childSelect"></select>
+  <button onclick="window.print()">Print</button>
+  <button onclick="exportSeparate()">Export Images</button>
+  <button onclick="exportSideBySide()">Side-by-Side</button>
+  <button onclick="exportGif()">Export GIF</button>
+  <span id="status-text" style="color:var(--gold-light); display:none;">Processing...</span>
+</div>
+
+<div class="page-container">
+  <div class="page" id="front-page">
+    <img class="page-image" src="clean_front.jpg" alt="Background">
+    <div class="front-text-overlay">
+      <div class="front-title">Celebration of Life</div>
+      <div class="front-subtitle">In Loving Memory of</div>
+      <div class="front-name">Obaapanyin<br>Cecilia Gyan</div>
+      <div class="front-years">1944 — 2026</div>
+    </div>
+
+    <div class="invited-overlay">
+      <p class="invited-label">Cordially invited by</p>
+      <div class="invited-people">
+        <div class="invited-person">
+          <div class="invited-photo" id="child-photo"></div>
+          <span class="invited-name" id="child-name"></span>
+        </div>
+        <span class="invited-amp" id="amp-separator">&amp;</span>
+        <div class="invited-person" id="spouse-block">
+          <div class="invited-photo" id="spouse-photo"></div>
+          <span class="invited-name" id="spouse-name"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="back-page">
+    <img class="page-image" src="clean_back.jpg" alt="Background">
+    <div class="back-content">
+      <h1 style="font-family:'Playfair Display'; font-style:italic; font-size:30px; color:var(--gold-light);">Funeral Arrangements</h1>
+      </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  // FAMILY DATA
+  const FAMILY = [
+    {
+      id: "hannah",
+      displayName: "Mrs. Hannah Bosompem",
+      photo: "hannah2.jpeg",
+      spouse: { displayName: "Mr. Kwabena Bosompem", photo: "../headshots/5.jpg" }
+    },
+    {
+        id: "josephine",
+        displayName: "Mrs. Josephine Nyamikeh",
+        photo: "../headshots/3.jpg",
+        spouse: { displayName: "Rev. Dubois Nyamikeh", photo: "../headshots/6.JPG" }
+    }
+  ];
+
+  const select = document.getElementById('childSelect');
+  const statusText = document.getElementById('status-text');
+
+  FAMILY.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = c.displayName;
+    select.appendChild(opt);
+  });
+
+  function renderFlyer(id) {
+    const child = FAMILY.find(c => c.id === id);
+    document.getElementById('child-photo').style.backgroundImage = `url('${child.photo}')`;
+    document.getElementById('child-name').textContent = child.displayName;
+    
+    if(child.spouse) {
+        document.getElementById('spouse-block').classList.remove('hidden');
+        document.getElementById('amp-separator').classList.remove('hidden');
+        document.getElementById('spouse-photo').style.backgroundImage = `url('${child.spouse.photo}')`;
+        document.getElementById('spouse-name').textContent = child.spouse.displayName;
+    } else {
+        document.getElementById('spouse-block').classList.add('hidden');
+        document.getElementById('amp-separator').classList.add('hidden');
+    }
+  }
+
+  select.addEventListener('change', (e) => renderFlyer(e.target.value));
+  renderFlyer(FAMILY[0].id);
+
+  function showStatus(msg) { statusText.style.display = 'inline'; statusText.textContent = msg; }
+  function hideStatus() { statusText.style.display = 'none'; }
+
+  // YOUR EXPORT LOGIC
+  async function convertOneImage(src) {
+    return new Promise(resolve => {
+      if (!src || src.startsWith('data:')) { resolve(null); return; }
+      const tmpImg = new Image();
+      tmpImg.crossOrigin = 'anonymous';
+      tmpImg.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = tmpImg.width; c.height = tmpImg.height;
+        c.getContext('2d').drawImage(tmpImg, 0, 0);
+        resolve(c.toDataURL('image/jpeg'));
+      };
+      tmpImg.onerror = () => resolve(null);
+      tmpImg.src = src;
+    });
+  }
+
+  async function convertImagesToDataURIs(container) {
+    const imgs = container.querySelectorAll('img');
+    for(let img of imgs) { const data = await convertOneImage(img.src); if(data) img.src = data; }
+    const bgs = container.querySelectorAll('[style*="background-image"]');
+    for(let el of bgs) {
+        const match = el.style.backgroundImage.match(/url\(['"]?([^'")\s]+)['"]?\)/);
+        if(match) { const data = await convertOneImage(match[1]); if(data) el.style.backgroundImage = `url('${data}')`; }
+    }
+  }
+
+  async function prepareForExport() {
+    showStatus('Preparing...');
+    await convertImagesToDataURIs(document.getElementById('front-page'));
+    await convertImagesToDataURIs(document.getElementById('back-page'));
+  }
+
+  async function capturePage(el) {
+    return html2canvas(el, { scale: 2, useCORS: true });
+  }
+
+  async function exportSeparate() {
+    await prepareForExport();
+    const front = await capturePage(document.getElementById('front-page'));
+    const link = document.createElement('a');
+    link.download = 'flyer-front.png';
+    link.href = front.toDataURL();
+    link.click();
+    hideStatus();
+  }
+
+  // ... [Include your GIF and Side-by-Side functions here] ...
+</script>
+</body>
+</html>
