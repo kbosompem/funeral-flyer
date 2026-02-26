@@ -226,6 +226,58 @@
     letter-spacing: 1px;
   }
 
+  .front-announcement {
+    position: absolute;
+    left: 4%;
+    right: 6%;
+    top: 34%;
+    z-index: 4;
+    text-align: right;
+    padding: 12px 10px 10px;
+  }
+
+  .front-announcement-text {
+    font-family: 'Cinzel', serif;
+    font-size: 9.8px;
+    letter-spacing: 1.1px;
+    line-height: 1.48;
+    text-transform: uppercase;
+    color: rgba(248, 240, 225, 0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+
+  .front-announcement-shape {
+    float: left;
+    width: 50%;
+    height: 340px;
+    shape-outside: polygon(
+      0% 0%,
+      86% 0%,
+      96% 14%,
+      90% 28%,
+      82% 44%,
+      76% 60%,
+      72% 74%,
+      74% 88%,
+      78% 100%,
+      0% 100%
+    );
+    shape-margin: 14px;
+  }
+
+  .front-announcement-break {
+    display: block;
+    margin-top: 6px;
+  }
+
+  .front-announcement-name {
+    display: block;
+    margin-top: 4px;
+    font-size: 11.5px;
+    letter-spacing: 2px;
+    margin-right: 18px;
+  }
+
   .hidden { display: none !important; }
 
   /* ============================================
@@ -535,6 +587,16 @@
     width: 52px;
   }
 
+  .collage-placeholder .collage-photo {
+    opacity: 0.65;
+    filter: grayscale(100%);
+  }
+
+  .collage-placeholder .collage-name,
+  .collage-placeholder .collage-role {
+    opacity: 0.35;
+  }
+
   .collage-photo {
     width: 40px; height: 40px;
     border-radius: 7px;
@@ -706,7 +768,16 @@
       </div>
     </div>
 
-    <div class="front-young-wrap">
+    <div class="front-announcement hidden" id="front-announcement">
+      <div class="front-announcement-text">
+        <span class="front-announcement-shape" aria-hidden="true"></span>
+        The Assini-Abrade abusua of Breman Asikuma, together with the Agona abusua and the Asona abusua of Assin Enyinabriam; Nana Afia (Ohio); Apostle Dr. Vasco Oburoni; Asafo Maame Ellen Coffie; Ms. Mary Boaheng; Pastor Kwabena Owusu-Achim; Mrs. Christabel Owusu-Achim; The Boateng Family of New York; The Acquah Gyan Family; Christina Efua Asefuah (NYC); Elizabeth Putu Mensah (NYC); Mr. &amp; Mrs. Danquah (KY); Solomon Boateng (KY); Mr. &amp; Mrs. Frank Boateng (NY); Diana &amp; Ed Boateng, PA-C (PA); and Dorothy Quainoo (NY).
+        <span class="front-announcement-break">Announce with deep sorrow the home call of their beloved:</span>
+        <span class="front-announcement-name">Obaapanyin Cecilia Gyan</span>
+      </div>
+    </div>
+
+    <div class="front-young-wrap" id="front-young-wrap">
       <img class="front-young-photo" src="portrait-young.jpg" alt="Cecilia Gyan young portrait">
       <div class="front-young-caption">Sweet 16</div>
     </div>
@@ -838,6 +909,16 @@
             <span class="collage-name">Dorothy<br>Quainoo Putu</span>
             <span class="collage-role">Daughter</span>
           </div>
+          <div class="collage-person">
+            <img class="collage-photo" src="Christina.jpeg" alt="Christina">
+            <span class="collage-name">Christina Efua<br>Asefuah</span>
+            <span class="collage-role">Daughter</span>
+          </div>
+          <div class="collage-person">
+            <img class="collage-photo" src="Elizabeth.jpeg" alt="Elizabeth">
+            <span class="collage-name">Elizabeth Putu<br>Mensah</span>
+            <span class="collage-role">Daughter</span>
+          </div>
         </div>
 
         <div class="collage-divider-label">— In-Laws —</div>
@@ -854,10 +935,10 @@
             <span class="collage-name">Kennedy<br>Boateng</span>
             <span class="collage-role">Son-in-law</span>
           </div>
-          <div class="collage-person">
-            <img class="collage-photo" src="../headshots/8.jpeg" alt="Ekow">
-            <span class="collage-name">Ekow<br>Quainoo</span>
-            <span class="collage-role">Son</span>
+          <div class="collage-person collage-placeholder">
+            <img class="collage-photo" src="../headshots/cherubs/1.svg" alt="Cherub">
+            <span class="collage-name">&nbsp;</span>
+            <span class="collage-role">&nbsp;</span>
           </div>
           <div class="collage-person">
             <img class="collage-photo" src="../headshots/4.JPG" alt="Nimo">
@@ -874,8 +955,18 @@
             <span class="collage-name">Rev. Dubois<br>Nyamikeh</span>
             <span class="collage-role">Son-in-law</span>
           </div>
+          <div class="collage-person collage-placeholder">
+            <img class="collage-photo" src="../headshots/cherubs/1.svg" alt="Cherub">
+            <span class="collage-name">&nbsp;</span>
+            <span class="collage-role">&nbsp;</span>
+          </div>
           <div class="collage-person">
-            <img class="collage-photo" src="../headshots/10.png" alt="Kofi Amoako">
+            <img class="collage-photo" src="../headshots/8.jpeg" alt="Ekow">
+            <span class="collage-name">Ekow<br>Quainoo</span>
+            <span class="collage-role">Son</span>
+          </div>
+          <div class="collage-person">
+            <img class="collage-photo" src="KofiAmoako.jpeg" alt="Kofi Amoako">
             <span class="collage-name">Kofi<br>Amoako</span>
             <span class="collage-role">Son</span>
           </div>
@@ -978,6 +1069,20 @@
       relationship: "Daughter",
       photo: "Dorothy.jpeg",
       spouse: null
+    },
+    {
+      id: "christina",
+      displayName: "Christina Efua Asefuah",
+      relationship: "Daughter",
+      photo: "Christina.jpeg",
+      spouse: null
+    },
+    {
+      id: "elizabeth",
+      displayName: "Elizabeth Putu Mensah",
+      relationship: "Daughter",
+      photo: "Elizabeth.jpeg",
+      spouse: null
     }
   ];
 
@@ -993,6 +1098,10 @@
   noneOpt.value = 'none';
   noneOpt.textContent = 'None (no invited)';
   select.appendChild(noneOpt);
+  const announcementOpt = document.createElement('option');
+  announcementOpt.value = 'announcement';
+  announcementOpt.textContent = 'Announcement text (no photos)';
+  select.appendChild(announcementOpt);
   FAMILY.forEach(child => {
     const opt = document.createElement('option');
     opt.value = child.id;
@@ -1002,8 +1111,18 @@
   let currentChild = FAMILY[0];
   select.value = currentChild.id;
 
+  const preset = new URLSearchParams(window.location.search).get('mode');
+  if (preset === 'announcement') {
+    select.value = 'announcement';
+  } else if (preset === 'none') {
+    select.value = 'none';
+  } else if (preset) {
+    const match = FAMILY.find(c => c.id === preset);
+    if (match) select.value = match.id;
+  }
+
   function getCurrentChild() {
-    if (select.value === 'none') return null;
+    if (select.value === 'none' || select.value === 'announcement') return null;
     const selected = FAMILY.find(c => c.id === select.value);
     return selected || currentChild;
   }
@@ -1037,12 +1156,29 @@
 
   function renderFlyer(childId) {
     const invitedSection = document.getElementById('invited-section');
+    const announcementBlock = document.getElementById('front-announcement');
+    const youngWrap = document.getElementById('front-young-wrap');
+    const frontPage = document.getElementById('front-page');
     if (childId === 'none') {
       invitedSection.classList.add('hidden');
+      announcementBlock.classList.add('hidden');
+      youngWrap.classList.remove('hidden');
+      frontPage.classList.remove('announcement-mode');
+      renderRsvp(null);
+      return;
+    }
+    if (childId === 'announcement') {
+      invitedSection.classList.add('hidden');
+      announcementBlock.classList.remove('hidden');
+      youngWrap.classList.add('hidden');
+      frontPage.classList.add('announcement-mode');
       renderRsvp(null);
       return;
     }
     invitedSection.classList.remove('hidden');
+    announcementBlock.classList.add('hidden');
+    youngWrap.classList.remove('hidden');
+    frontPage.classList.remove('announcement-mode');
     const child = FAMILY.find(c => c.id === childId);
     if (!child) { renderRsvp(null); return; }
     currentChild = child;
@@ -1069,7 +1205,7 @@
   }
 
   select.addEventListener('change', () => renderFlyer(select.value));
-  renderFlyer(FAMILY[0].id);
+  renderFlyer(select.value);
 </script>
 
 <!-- html2canvas for rasterizing pages (local copy for file:// support) -->
@@ -1095,7 +1231,7 @@
   function startServer() {
     const cmd = 'python3 -m http.server 8000 -d "' + (location.pathname.replace(/\/[^/]*$/, '').replace(/^\//, '')) + '"';
     navigator.clipboard.writeText(cmd).then(() => {
-      showStatus('Command copied! Paste in Terminal, then open http://localhost:8000/v22.html');
+      showStatus('Command copied! Paste in Terminal, then open http://localhost:8000/v23.html');
       setTimeout(hideStatus, 6000);
     }).catch(() => {
       prompt('Run this in Terminal:', cmd);
